@@ -1,0 +1,9 @@
+def main():
+    numPlayers = 0
+    while numPlayers < 2 or numPlayers > 6:
+        numPlayers = int(input('Enter number of players (2-6)\n'))
+
+    for playerNum in range(0,numPlayers):
+        subprocess.call(input('Enter process for player ' + str(playerNum)),
+                        stdin=foo,
+                        stdout=bar)
