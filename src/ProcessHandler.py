@@ -1,4 +1,4 @@
-# File Main.py
+# File ProcessHandler.py
 # This file is a part of PowerGrid
 # Copyright 2013 Stephen Kraemer
 
@@ -15,16 +15,10 @@
 # You should have received a copy of the GNU General Public License
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
 
-from src.ProcessHandler import ProcessHandler
+import subprocess
 
-def main():
-    numPlayers = 0
-    while numPlayers < 2 or numPlayers > 6:
-        numPlayers = int(input('Enter number of players (2-6)\n'))
-
-    processHandlers = []
-
-    for playerNum in range(0,numPlayers):
-        processHandlers.append(
-            ProcessHandler(
-                input('Enter process for player ' + str(playerNum) + '\n')))
+class ProcessHandler:
+    def __init__(self, processName):
+        self.client = subprocess.Popen(processName,
+                                       stdin = subprocess.PIPE,
+                                       stdout = subprocess.PIPE)
