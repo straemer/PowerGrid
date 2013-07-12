@@ -22,3 +22,18 @@ class ProcessHandler:
         self.client = subprocess.Popen(processName,
                                        stdin = subprocess.PIPE,
                                        stdout = subprocess.PIPE)
+
+    def requestAuctionStart(self):
+        pass
+
+    def requestBid(self, powerPlant):
+        pass
+
+    def requestMaterialPurchase(self):
+        pass
+
+    def requestCityPurchase(self):
+        pass
+
+    def requestPowerPowerplants(self):
+        pass
