@@ -29,7 +29,7 @@ class ProcessHandler:
 
     def __generateRequest(self, requestString):
         self.requestCount += 1
-        self.client.write('REQUEST ' + str(requestCount) + ' : ' + requestString + ' END')
+        self.client.write('REQUEST ' + str(requestCount) + ' : ' + requestString + ' END\n')
 
     def requestAuctionStart(self):
 	_generateRequest("Auction")
