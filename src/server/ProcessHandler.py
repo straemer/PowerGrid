@@ -16,8 +16,10 @@
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
 
 import subprocess
+from copy import *
 
 from src.server.ClientInputHandler import *
+from src.ServerRequestTypes import *
 
 class ProcessHandler:
     def __init__(self, processName):
@@ -28,32 +30,51 @@ class ProcessHandler:
         self.inputHandler = ClientInputHandler(self)
         self.inputHandler.start()
         self.requests = {}
+        self.__condition = threading.Condition()
+        self.__responseLock = threading.Lock()
+        self.__response = None
 
     def __del__(self):
         self.client.terminate()
 
     def __generateRequest(self, requestType, args=None):
         self.requestCount += 1
-        requestText = requestType
+        requestText = str(requestType)
         self.requests[requestCount] = requestType
         if args != None:
             requestText += '\n' + args
+        self.__condition.acquire()
         self.client.write('REQUEST\n' + str(requestCount) + '\n' + requestText + '\nEND\n')
+        self.__condition.wait()
+        self.__responseLock.acquire()
+        ret = copy(self.response)
+        self.__responseLock.release()
+        return ret
 
+    #@return int representing PowerPlant to begin bidding on
     def requestAuctionStart(self):
-        __generateRequest("Auction")
+        return __generateRequest(ServerRequestTypes.AuctionStart)
 
+    #@return int representing Price player bid
     def requestBid(self, powerPlant):
-        __generateRequest("Bid" + powerPlant.toString())
+        return __generateRequest(ServerRequestTypes.PowerPlantBid, args=powerPlant.toString())
 
     def requestMaterialPurchase(self):
-        __generateRequest("MaterialPurchase")
+        return __generateRequest(ServerRequestTypes.ResourcePurchase)
 
     def requestCityPurchase(self):
-        _generateRequest("CityPurchase")
+        return __generateRequest(ServerRequestTypes.CityPurchase)
 
     def requestSupplyPowerForCities(self):
-        _generateRequest("SupplyPowerForCities")
+        return __generateRequest(ServerRequestTypes.SupplyPowerForCities)
 
     def getRequestType(self, requestId):
         return self.requests[requestId]
+
+    def writeResponse(self, response):
+        self.__condition.acquire()
+        self.__responseLock.acquire()
+        self.__response = response
+        self.__responseLock.release()
+        self.__condition.notify()
+        self.__condition.release()

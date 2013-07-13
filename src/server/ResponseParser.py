@@ -17,23 +17,28 @@
 
 import re #regex
 
+from src.ServerRequestTypes import *
+
 class ResponseParser:
     def __init__(self, processHandler):
         self.processHandler = processHandler
 
     def parse(response):
-        splitResponse = re.split('\n', response)
-        requestId = splitResponse[0]
-        requestType = processHandler.getRequestType(requestId)
-        if requestType.lower() == 'auction':
-            pass
-        elif requestType.lower() == 'bid':
-            pass
-        elif requestType.lower() == 'materialpurchase':
-            pass
-        elif requestType.lower() == 'citypurchase':
-            pass
-        elif requestType.lower() == 'supplypowerforcities':
-            pass
-        else:
-            raise("Invalid Response")
+        try:
+            splitResponse = re.split('\n', response)
+            requestId = splitResponse[0]
+            requestType = processHandler.getRequestType(requestId)
+            if int(requestType) == ServerRequestTypes.AuctionStart:
+                self.processHandler.writeResponse(int(splitResponse[1]))
+            elif int(requestType) == ServerRequestTypes.PowerPlantBid:
+                self.processHandler.writeResponse(int(splitResponse[1]))
+            elif int(requestType) == ServerRequestTypes.ResourcePurchase:
+                self.processHandler.writeResponse(None)
+            elif int(requestType) == ServerRequestTypes.CityPurchase:
+                self.processHandler.writeResponse(None)
+            elif int(requestType) == ServerRequestTypes.SupplyPowerForCities:
+                self.processHandler.writeResponse(None)
+            else:
+                self.processHandler.writeResponse(None)
+        except:
+            self.processHandler.writeResponse(None)
