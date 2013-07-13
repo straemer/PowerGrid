@@ -35,31 +35,27 @@ class Deck(object):
         
         for i in range (10,2,-1):
             self.placeCardOnTop(i)
-        
-        
 
     def __popAndMove(self, cardToFind, newIndex):
         for (i,card) in enumerate(self.cards):
-            if isinstance(card, PowerPlant) and card.cost == cardToFind:
-                self.cards.insert(newIndex, self.cards.pop(i))
-                return
-            elif isinstance(card, PowerPlant) and card.type == "STAGE3":
+            if card.cost == cardToFind or  card.type == cardToFind:
                 self.cards.insert(newIndex, self.cards.pop(i))
                 return
         print("Invalid Card. Could not locate")
             
-    def placeCardOnTop(self, card):       
-        self.__popAndMove(card,0)
+    def placeCardOnTop(self, cardID):       
+        self.__popAndMove(cardID,0)
             
-    def placeCardAtBottom(self, card):
-        self.__popAndMove(card,len(self.cards)-1)
+    def placeCardAtBottom(self, cardID):
+        self.__popAndMove(cardID,len(self.cards)-1)
             
     def shuffle(self):
         random.shuffle(self.cards)
 
     def drawCard(self):
-        card = self.cards.pop(0)
-        if (card.type == "STAGE3"):
-            #NOTIFY GAME THAT STAGE 3 has occured
-            pass
-        return card
+        try:
+            return self.cards.pop(0)
+        except IndexError:
+            #Deck has possibly ran out of cards
+            print("Deck has run out of cards")  
+            return None        
