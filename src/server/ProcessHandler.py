@@ -22,9 +22,14 @@ class ProcessHandler:
         self.client = subprocess.Popen(processName,
                                        stdin = subprocess.PIPE,
                                        stdout = subprocess.PIPE)
+        self.requestCount = 0
 
     def __del__(self):
         self.client.terminate()
+
+    def __generateRequest(self, requestString):
+        self.requestCount += 1
+        self.client.write('request ' + str(requestCount) + ' : ' + requestString)
 
     def requestAuctionStart(self):
         pass
