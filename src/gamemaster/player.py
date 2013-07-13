@@ -1,4 +1,6 @@
 class Player:
+
+	
     money=0
     resources=[]
     cities=[]
