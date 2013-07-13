@@ -32,16 +32,16 @@ class ProcessHandler:
         self.client.write('request ' + str(requestCount) + ' : ' + requestString)
 
     def requestAuctionStart(self):
-        pass
-
+	_generateRequest("Auction")
+ 
     def requestBid(self, powerPlant):
-        pass
+        _generateRequest("Bid; " + powerPlant.toString()
 
     def requestMaterialPurchase(self):
-        pass
+	_generateRequest("MaterialPurchase")
 
     def requestCityPurchase(self):
-        pass
+	_generateRequest("CityPurchase")
 
-    def requestPowerPowerplants(self):
-        pass
+    def requestSupplyPowerForCities(self):
+	_generateRequest("SupplyPowerForCities")
