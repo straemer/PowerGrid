@@ -29,13 +29,13 @@ class ProcessHandler:
 
     def __generateRequest(self, requestString):
         self.requestCount += 1
-        self.client.write('REQUEST ' + str(requestCount) + ' : ' + requestString + ' END\n')
+        self.client.write('REQUEST\n' + str(requestCount) + '\n' + requestString + '\nEND\n')
 
     def requestAuctionStart(self):
 	_generateRequest("Auction")
 
     def requestBid(self, powerPlant):
-        _generateRequest("Bid; " + powerPlant.toString()
+        _generateRequest("Bid\n" + powerPlant.toString()
 
     def requestMaterialPurchase(self):
 	_generateRequest("MaterialPurchase")
