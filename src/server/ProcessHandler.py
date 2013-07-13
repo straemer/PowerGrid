@@ -23,6 +23,8 @@ class ProcessHandler:
                                        stdin = subprocess.PIPE,
                                        stdout = subprocess.PIPE)
         self.requestCount = 0
+        self.inputHandler = ClientInputHandler(self.client)
+        self.inputHandlerThread = threading.Thread(target=self.inputHandler.run)
 
     def __del__(self):
         self.client.terminate()
