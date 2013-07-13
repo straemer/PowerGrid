@@ -15,5 +15,31 @@
 # You should have received a copy of the GNU General Public License
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
 
-def parseRequest ( request ):
-    pass
+import re
+
+from src.ClientRequestTypes import *
+
+def parseRequest(request):
+    splitRequest = re.split('\n', request)
+    if int(splitRequest[0]) == ClientRequestTypes.PLAYER_FUNDS:
+        pass
+    elif int(splitRequest[0]) == ClientRequestTypes.GRAPH:
+        pass
+    elif int(splitRequest[0]) == ClientRequestTypes.AVAILABLE_RESOURCES:
+        pass
+    elif int(splitRequest[0]) == ClientRequestTypes.AVAILABLE_POWER_PLANTS:
+        pass
+    elif int(splitRequest[0]) == ClientRequestTypes.POWER_PLANT_PROPERTIES:
+        pass
+    elif int(splitRequest[0]) == ClientRequestTypes.NODE_INFO:
+        pass
+    elif int(splitRequest[0]) == ClientRequestTypes.ALL_POWER_PLANTS:
+        pass
+    elif int(splitRequest[0]) == ClientRequestTypes.PLAYSER_IN_ORDER:
+        pass
+    elif int(splitRequest[0]) == ClientRequestTypes.PLAYER_RESOURCES:
+        pass
+    elif int(splitRequest[0]) == ClientRequestTypes.CURRENT_STAGE:
+        pass
+    else:
+        raise("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
