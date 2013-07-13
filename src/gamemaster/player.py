@@ -15,11 +15,50 @@ class Player:
         self.max_resources=[0, 0, 0, 0]  
         
         self.cities_powered=0
+
+    def get_Coal(self):
+        return self.resources[0]
+    
+    def get_Oil (self):
+        return self.resources[1]
+    
+    def get_Garbage(self):
+        return self.resources[2]
+    
+    def get_Uranium(self):
+        return self.resources[3]
+    
+    def add_Coal(self, num):
+        self.resources[0]+=num
+        
+    def add_Oil(self, num): 
+        self.resources[1]+=num    
+    
+    def add_Garbage(self, num):
+        self.resources[2]+=num    
+        
+    def add_Uranium(self, num):
+        self.resources[3]+=num        
+
+    def use_Coal(self, num):
+        self.resources[0]-=num
+        
+    def use_Oil(self, num): 
+        self.resources[1]-=num    
+    
+    def use_Garbage(self, num):
+        self.resources[2]-=num    
+        
+    def use_Uranium(self, num):
+        self.resources[3]-=num   
+
+    def use_money(self, num):
+        self.money -= num
     
     def f_b_get_money(self):
         return self.money
     
-    def get_resources(self):
+    def getResources(self):
         return self.resources
     
     def get_cities(self):
