@@ -24,18 +24,21 @@ class ResponseParser:
         self.processHandler = processHandler
 
     def parse(response):
-        splitResponse = re.split('\n', response)
-        requestId = splitResponse[0]
-        requestType = processHandler.getRequestType(requestId)
-        if int(requestType) == ServerRequestTypes.AuctionStart:
-            pass
-        elif int(requestType) == ServerRequestTypes.PowerPlantBid:
-            pass
-        elif int(requestType) == ServerRequestTypes.ResourcePurchase:
-            pass
-        elif int(requestType) == ServerRequestTypes.CityPurchase:
-            pass
-        elif int(requestType) == ServerRequestTypes.SupplyPowerForCities:
-            pass
-        else:
-            pass
+        try:
+            splitResponse = re.split('\n', response)
+            requestId = splitResponse[0]
+            requestType = processHandler.getRequestType(requestId)
+            if int(requestType) == ServerRequestTypes.AuctionStart:
+                self.processHandler.writeResponse(None)
+            elif int(requestType) == ServerRequestTypes.PowerPlantBid:
+                self.processHandler.writeResponse(None)
+            elif int(requestType) == ServerRequestTypes.ResourcePurchase:
+                self.processHandler.writeResponse(None)
+            elif int(requestType) == ServerRequestTypes.CityPurchase:
+                self.processHandler.writeResponse(None)
+            elif int(requestType) == ServerRequestTypes.SupplyPowerForCities:
+                self.processHandler.writeResponse(None)
+            else:
+                self.processHandler.writeResponse(None)
+        except:
+            self.processHandler.writeResponse(None)
