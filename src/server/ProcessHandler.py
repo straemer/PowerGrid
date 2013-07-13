@@ -29,11 +29,11 @@ class ProcessHandler:
 
     def __generateRequest(self, requestString):
         self.requestCount += 1
-        self.client.write('request ' + str(requestCount) + ' : ' + requestString)
+        self.client.write('REQUEST ' + str(requestCount) + ' : ' + requestString + ' END')
 
     def requestAuctionStart(self):
 	_generateRequest("Auction")
- 
+
     def requestBid(self, powerPlant):
         _generateRequest("Bid; " + powerPlant.toString()
 
