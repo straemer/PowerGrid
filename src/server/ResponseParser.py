@@ -33,7 +33,11 @@ class ResponseParser:
             elif int(requestType) == ServerRequestTypes.PowerPlantBid:
                 self.processHandler.writeResponse(int(splitResponse[1]))
             elif int(requestType) == ServerRequestTypes.ResourcePurchase:
-                self.processHandler.writeResponse(None)
+                parsedResponse = []
+                for line in splitResponse[1:]:
+                    resourcePair = re.split('\\s+', line)
+                    parsedResponse.append((resourcePair[0], int(resourcePair[1])))
+                self.processHandler.writeResponse(parsedResponse)
             elif int(requestType) == ServerRequestTypes.CityPurchase:
                 self.processHandler.writeResponse(None)
             elif int(requestType) == ServerRequestTypes.SupplyPowerForCities:
