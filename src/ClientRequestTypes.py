@@ -1,4 +1,4 @@
-# ClientRequestTypes.py
+# File ClientRequestTypes.py
 # This file is a part of PowerGrid
 # Copyright 2013 Stephen Kraemer, Nikolai Semenenko
 
