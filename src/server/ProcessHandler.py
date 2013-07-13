@@ -56,10 +56,11 @@ class ProcessHandler:
     def requestAuctionStart(self):
         return __generateRequest(ServerRequestTypes.AuctionStart)
 
+    #@param player - player that currently has highest bid
     #@return int representing Price player bid
-    def requestBid(self, powerPlant, minBid):
+    def requestBid(self, powerPlant, minBid, player):
         return __generateRequest(ServerRequestTypes.PowerPlantBid,
-                                 args=[powerPlant.toString(), str(minBid)])
+                                 args=[powerPlant.toString(), str(minBid), str(player)])
 
     def requestMaterialPurchase(self):
         return __generateRequest(ServerRequestTypes.ResourcePurchase)
