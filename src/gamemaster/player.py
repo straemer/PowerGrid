@@ -1,11 +1,4 @@
 class Player:
-    money=0
-    resources=[]
-    cities=[]
-    power_plants=[]
-    max_plants=3
-    max_resources=[]
-    cities_powered=0
     
     def __init__(self):
         self.money=0
@@ -78,7 +71,7 @@ class Player:
         else:
             for r in res_req:
                 self.cities.append(r)          
- """  placeholders         
+'''      
     def bid():
         valid=False
         while valid==False:
@@ -120,6 +113,6 @@ class PowerPlant:
     cities_powered=0
     resource_types=[]
     resource_capacity=0
-    resources_req=0 """
+    resources_req=0 '''
             
 
