@@ -17,6 +17,8 @@
 
 import re #regex
 
+from src.ServerRequestTypes import *
+
 class ResponseParser:
     def __init__(self, processHandler):
         self.processHandler = processHandler
@@ -25,15 +27,15 @@ class ResponseParser:
         splitResponse = re.split('\n', response)
         requestId = splitResponse[0]
         requestType = processHandler.getRequestType(requestId)
-        if requestType.lower() == 'auction':
+        if int(requestType) == ServerRequestTypes.AuctionStart:
             pass
-        elif requestType.lower() == 'bid':
+        elif int(requestType) == ServerRequestTypes.PowerPlantBid:
             pass
-        elif requestType.lower() == 'materialpurchase':
+        elif int(requestType) == ServerRequestTypes.ResourcePurchase:
             pass
-        elif requestType.lower() == 'citypurchase':
+        elif int(requestType) == ServerRequestTypes.CityPurchase:
             pass
-        elif requestType.lower() == 'supplypowerforcities':
+        elif int(requestType) == ServerRequestTypes.SupplyPowerForCities:
             pass
         else:
-            raise("Invalid Response")
+            pass

@@ -18,6 +18,7 @@
 import subprocess
 
 from src.server.ClientInputHandler import *
+from src.ServerRequestTypes import *
 
 class ProcessHandler:
     def __init__(self, processName):
@@ -34,26 +35,26 @@ class ProcessHandler:
 
     def __generateRequest(self, requestType, args=None):
         self.requestCount += 1
-        requestText = requestType
+        requestText = str(requestType)
         self.requests[requestCount] = requestType
         if args != None:
             requestText += '\n' + args
         self.client.write('REQUEST\n' + str(requestCount) + '\n' + requestText + '\nEND\n')
 
     def requestAuctionStart(self):
-        __generateRequest("Auction")
+        return __generateRequest(ServerRequestTypes.AuctionStart)
 
     def requestBid(self, powerPlant):
-        __generateRequest("Bid" + powerPlant.toString())
+        return __generateRequest(ServerRequestTypes.PowerPlantBid, args=powerPlant.toString())
 
     def requestMaterialPurchase(self):
-        __generateRequest("MaterialPurchase")
+        return __generateRequest(ServerRequestTypes.ResourcePurchase)
 
     def requestCityPurchase(self):
-        _generateRequest("CityPurchase")
+        return __generateRequest(ServerRequestTypes.CityPurchase)
 
     def requestSupplyPowerForCities(self):
-        _generateRequest("SupplyPowerForCities")
+        return __generateRequest(ServerRequestTypes.SupplyPowerForCities)
 
     def getRequestType(self, requestId):
         return self.requests[requestId]
