@@ -37,3 +37,6 @@ nosetests.xml
 # Temp Files
 *~
 *#*
+
+#vim temp files
+.*.swp

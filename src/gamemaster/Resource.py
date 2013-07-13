@@ -15,6 +15,8 @@ class Resource:
   resources = [0, 0, 0, 0]    # resource in order of c, o, g, u
 
   # Market Price
+  # index corresponds to price -1 of the slot on gameboard
+  # value in the slot is the number of resources available at that price
   coalPrice = [3, 3, 3, 3, 3, 3, 3, 3]
   oilPrice = [0, 0, 3, 3, 3, 3, 3, 3]
   garbagePrice = [0, 0, 0, 0, 0, 0, 3, 3]
