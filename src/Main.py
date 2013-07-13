@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
 
-from src.ProcessHandler import ProcessHandler
+from src.server.ProcessHandler import ProcessHandler
 
 def main():
     numPlayers = 0

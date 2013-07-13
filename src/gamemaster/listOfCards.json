@@ -1,0 +1,258 @@
+{
+    "deck": {
+        "cards": [
+            {
+                "cost": 3,
+                "resourceTypes": ["oil"],
+                "resourcesRequired": 2,
+                "housesPowered": 1
+            },
+            {
+                "cost": 4,
+                "resourceTypes": ["coal"],
+                "resourcesRequired": 2,
+                "housesPowered": 1
+            },
+            {
+                "cost": 5,
+                "resourceTypes": ["coal", "oil"],
+                "resourcesRequired": 2,
+                "housesPowered": 1
+            },
+            {
+                "cost": 6,
+                "resourceTypes": ["garbage"],
+                "resourcesRequired": 1,
+                "housesPowered": 1
+            },
+            {
+                "cost": 7,
+                "resourceTypes": ["oil"],
+                "resourcesRequired": 3,
+                "housesPowered": 2
+            },
+            {
+                "cost": 8,
+                "resourceTypes": ["coal"],
+                "resourcesRequired": 3,
+                "housesPowered": 2
+            },
+            {
+                "cost": 9,
+                "resourceTypes": ["oil"],
+                "resourcesRequired": 1,
+                "housesPowered": 1
+            },
+            {
+                "cost": 10,
+                "resourceTypes": ["coal"],
+                "resourcesRequired": 2,
+                "housesPowered": 2
+            },
+            {
+                "cost": 11,
+                "resourceTypes": ["uranium"],
+                "resourcesRequired": 1,
+                "housesPowered": 2
+            },
+            {
+                "cost": 12,
+                "resourceTypes": ["coal", "oil"],
+                "resourcesRequired": 2,
+                "housesPowered": 2
+            },
+            {
+                "cost": 13,
+                "resourceTypes": ["eco"],
+                "resourcesRequired": 0,
+                "housesPowered": 1
+            },
+            {
+                "cost": 14,
+                "resourceTypes": ["garbage"],
+                "resourcesRequired": 2,
+                "housesPowered": 2
+            },
+            {
+                "cost": 15,
+                "resourceTypes": ["coal"],
+                "resourcesRequired": 2,
+                "housesPowered": 3
+            },
+            {
+                "cost": 16,
+                "resourceTypes": ["oil"],
+                "resourcesRequired": 2,
+                "housesPowered": 3
+            },
+            {
+                "cost": 17,
+                "resourceTypes": ["uranium"],
+                "resourcesRequired": 1,
+                "housesPowered": 2
+            },
+            {
+                "cost": 18,
+                "resourceTypes": ["eco"],
+                "resourcesRequired": 0,
+                "housesPowered": 2
+            },
+            {
+                "cost": 19,
+                "resourceTypes": ["garbage"],
+                "resourcesRequired": 2,
+                "housesPowered": 3
+            },
+            {
+                "cost": 20,
+                "resourceTypes": ["coal"],
+                "resourcesRequired": 3,
+                "housesPowered": 5
+            },
+            {
+                "cost": 21,
+                "resourceTypes": ["coal", "oil"],
+                "resourcesRequired": 2,
+                "housesPowered": 4
+            },
+            {
+                "cost": 22,
+                "resourceTypes": ["eco"],
+                "resourcesRequired": 0,
+                "housesPowered": 2
+            },
+            {
+                "cost": 23,
+                "resourceTypes": ["uranium"],
+                "resourcesRequired": 1,
+                "housesPowered": 3
+            },
+            {
+                "cost": 24,
+                "resourceTypes": ["garbage"],
+                "resourcesRequired": 2,
+                "housesPowered": 4
+            },
+            {
+                "cost": 25,
+                "resourceTypes": ["coal"],
+                "resourcesRequired": 2,
+                "housesPowered": 5
+            },
+            {
+                "cost": 26,
+                "resourceTypes": ["oil"],
+                "resourcesRequired": 2,
+                "housesPowered": 5
+            },
+            {
+                "cost": 27,
+                "resourceTypes": ["eco"],
+                "resourcesRequired": 0,
+                "housesPowered": 3
+            },
+            {
+                "cost": 28,
+                "resourceTypes": ["uranium"],
+                "resourcesRequired": 1,
+                "housesPowered": 4
+            },
+            {
+                "cost": 29,
+                "resourceTypes": ["coal", "oil"],
+                "resourcesRequired": 1,
+                "housesPowered": 4
+            },
+            {
+                "cost": 30,
+                "resourceTypes": ["garbage"],
+                "resourcesRequired": 3,
+                "housesPowered": 6
+            },
+            {
+                "cost": 31,
+                "resourceTypes": ["coal"],
+                "resourcesRequired": 3,
+                "housesPowered": 6
+            },
+            {
+                "cost": 32,
+                "resourceTypes": ["oil"],
+                "resourcesRequired": 3,
+                "housesPowered": 6
+            },
+            {
+                "cost": 33,
+                "resourceTypes": ["eco"],
+                "resourcesRequired": 0,
+                "housesPowered": 4
+            },
+            {
+                "cost": 34,
+                "resourceTypes": ["uranium"],
+                "resourcesRequired": 1,
+                "housesPowered": 5
+            },
+            {
+                "cost": 35,
+                "resourceTypes": ["oil"],
+                "resourcesRequired": 1,
+                "housesPowered": 5
+            },
+            {
+                "cost": 36,
+                "resourceTypes": ["oil"],
+                "resourcesRequired": 3,
+                "housesPowered": 7
+            },
+            {
+                "cost": 37,
+                "resourceTypes": ["eco"],
+                "resourcesRequired": 0,
+                "housesPowered": 4
+            },
+            {
+                "cost": 38,
+                "resourceTypes": ["garbage"],
+                "resourcesRequired": 3,
+                "housesPowered": 7
+            },
+            {
+                "cost":39,
+                "resourceTypes": ["uranium"],
+                "resourcesRequired": 1,
+                "housesPowered": 6
+            },
+            {
+                "cost": 40,
+                "resourceTypes": ["oil"],
+                "resourcesRequired": 2,
+                "housesPowered": 6
+            },
+            {
+                "cost": 42,
+                "resourceTypes": ["coal"],
+                "resourcesRequired": 2,
+                "housesPowered": 6
+            },
+            {
+                "cost": 44,
+                "resourceTypes": ["eco"],
+                "resourcesRequired": 0,
+                "housesPowered": 5
+            },
+            {
+                "cost": 46,
+                "resourceTypes": ["coal", "iron"],
+                "resourcesRequired": 3,
+                "housesPowered": 7
+            },
+            {
+                "cost": 50,
+                "resourceTypes": ["eco"],
+                "resourcesRequired": 0,
+                "housesPowered": 6
+            }
+        ]
+    }
+}

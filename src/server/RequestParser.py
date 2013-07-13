@@ -1,4 +1,4 @@
-# File ProcessHandler.py
+# File RequestParser.py
 # This file is a part of PowerGrid
 # Copyright 2013 Stephen Kraemer
 
@@ -15,10 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
 
-import subprocess
-
-class ProcessHandler:
-    def __init__(self, processName):
-        self.client = subprocess.Popen(processName,
-                                       stdin = subprocess.PIPE,
-                                       stdout = subprocess.PIPE)
+class RequestParser:
+    def __init__(self):
+        pass
