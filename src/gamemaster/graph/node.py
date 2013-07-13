@@ -19,6 +19,8 @@ class Node:
 	#Node city is the unique name of the city
 	#int cost is the amount needed to make a connection
 	def makeConnection(self, city, cost):
+		if (self.reachableNodes.get(city.name) != None):
+			raise Exception("Connection already made for " + city.name)
 		self.reachableNodes[city.name] = cost
 
 	#return Boolean This method will return whether a given city can be reached from this node
@@ -35,6 +37,8 @@ class Node:
 	#return void This will increment the cost to occupy the next spot
 	#int player isthe unique name of the player
 	def addPlayer(self, player):
+		if (self.currentCost > 20 or self.playerHere(player)):
+			raise Exception("The player is already in " + self.name)
 		if (self.currentCost < 20):
 			self.currentCost += 5
 		self.occupiedPlayers.append(player)
