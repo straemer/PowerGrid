@@ -63,11 +63,3 @@ class Deck(object):
             #NOTIFY GAME THAT STAGE 3 has occured
             pass
         return card
-   
-    def print(self):
-        for card in self.cards:
-            print("%s " % card.cost),
-
-
-
-

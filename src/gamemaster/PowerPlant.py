@@ -14,11 +14,13 @@ class PowerPlant(object):
                 self.hybrid = False
             else:
                 self.hybrid = True
-            
     
-        
-            
-    
+    def __str__(self):
+        return "[%r, %r, %r, %r, %r]" % (self.type, self.cost, self.resourceTypes, self.resourcesRequired, self.housesPowered)
+    def __unicode__(self):
+        return "[%r, %r, %r, %r, %r]" % (self.type, self.cost, self.resourceTypes, self.resourcesRequired, self.housesPowered)
+    def __repr__(self):
+        return "[%r, %r, %r, %r, %r]" % (self.type, self.cost, self.resourceTypes, self.resourcesRequired, self.housesPowered)
       
         
         
