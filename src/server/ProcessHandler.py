@@ -54,22 +54,22 @@ class ProcessHandler:
 
     #@return int representing PowerPlant to begin bidding on
     def requestAuctionStart(self):
-        return __generateRequest(ServerRequestTypes.AuctionStart)
+        return self.__generateRequest(ServerRequestTypes.AUCTION_START)
 
     #@param player - player that currently has highest bid
     #@return int representing Price player bid
     def requestBid(self, powerPlant, minBid, player):
-        return __generateRequest(ServerRequestTypes.PowerPlantBid,
+        return self.__generateRequest(ServerRequestTypes.POWER_PLANT_BID,
                                  args=[powerPlant.toString(), str(minBid), str(player)])
 
     def requestMaterialPurchase(self):
-        return __generateRequest(ServerRequestTypes.ResourcePurchase)
+        return self.__generateRequest(ServerRequestTypes.RESOURCE_PURCHASE)
 
     def requestCityPurchase(self):
-        return __generateRequest(ServerRequestTypes.CityPurchase)
+        return self.__generateRequest(ServerRequestTypes.CITY_PURCHASE)
 
     def requestSupplyPowerForCities(self):
-        return __generateRequest(ServerRequestTypes.SupplyPowerForCities)
+        return self.__generateRequest(ServerRequestTypes.SUPPLY_POWER_FOR_CITIES)
 
     def getRequestType(self, requestId):
         return self.requests[requestId]
