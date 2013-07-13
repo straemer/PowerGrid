@@ -16,8 +16,8 @@
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
 
 class ServerRequestTypes:
-    AuctionStart = 0
-    PowerPlantBid = 1
-    ResourcePurchase = 2
-    CityPurchase = 3
-    SupplyPowerForCities = 4
+    AUCTION_START = 0
+    POWER_PLANT_BID = 1
+    RESOURCE_PURCHASE = 2
+    CITY_PURCHASE = 3
+    SUPPLY_POWER_FOR_CITIES = 4
