@@ -42,7 +42,8 @@ class ProcessHandler:
         requestText = str(requestType)
         self.requests[requestCount] = requestType
         if args != None:
-            requestText += '\n' + args
+            for arg in args:
+                requestText += '\n' + arg
         self.__condition.acquire()
         self.client.write('REQUEST\n' + str(requestCount) + '\n' + requestText + '\nEND\n')
         self.__condition.wait()
@@ -53,20 +54,22 @@ class ProcessHandler:
 
     #@return int representing PowerPlant to begin bidding on
     def requestAuctionStart(self):
-        return __generateRequest(ServerRequestTypes.AuctionStart)
+        return self.__generateRequest(ServerRequestTypes.AUCTION_START)
 
+    #@param player - player that currently has highest bid
     #@return int representing Price player bid
-    def requestBid(self, powerPlant):
-        return __generateRequest(ServerRequestTypes.PowerPlantBid, args=powerPlant.toString())
+    def requestBid(self, powerPlant, minBid, player):
+        return self.__generateRequest(ServerRequestTypes.POWER_PLANT_BID,
+                                 args=[powerPlant.toString(), str(minBid), str(player)])
 
     def requestMaterialPurchase(self):
-        return __generateRequest(ServerRequestTypes.ResourcePurchase)
+        return self.__generateRequest(ServerRequestTypes.RESOURCE_PURCHASE)
 
     def requestCityPurchase(self):
-        return __generateRequest(ServerRequestTypes.CityPurchase)
+        return self.__generateRequest(ServerRequestTypes.CITY_PURCHASE)
 
     def requestSupplyPowerForCities(self):
-        return __generateRequest(ServerRequestTypes.SupplyPowerForCities)
+        return self.__generateRequest(ServerRequestTypes.SUPPLY_POWER_FOR_CITIES)
 
     def getRequestType(self, requestId):
         return self.requests[requestId]

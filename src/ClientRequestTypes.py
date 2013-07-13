@@ -1,4 +1,4 @@
-# ClientRequestTypes.py
+# File ClientRequestTypes.py
 # This file is a part of PowerGrid
 # Copyright 2013 Stephen Kraemer, Nikolai Semenenko
 
@@ -19,7 +19,7 @@ class ClientRequestTypes:
     PLAYER_FUNDS = 0
     GRAPH = 1
     AVAILABLE_RESOURCES = 2
-    AVAILAVLE_POWER_PLANT = 3
+    AVAILABLE_POWER_PLANTS = 3
     POWER_PLANT_PROPERTIES = 4
     NODE_INFO = 5
     ALL_POWER_PLANTS = 6

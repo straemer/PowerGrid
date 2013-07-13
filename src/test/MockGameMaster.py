@@ -1,4 +1,4 @@
-# File ServerRequestTypes.py
+# MockGameMaster.py
 # This file is a part of PowerGrid
 # Copyright 2013 Stephen Kraemer, Nikolai Semenenko
 
@@ -15,9 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
 
-class ServerRequestTypes:
-    AUCTION_START = 0
-    POWER_PLANT_BID = 1
-    RESOURCE_PURCHASE = 2
-    CITY_PURCHASE = 3
-    SUPPLY_POWER_FOR_CITIES = 4
+from src.server.ProcessHandler import *
+
+class MockGameMaster:
+    pass
