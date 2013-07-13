@@ -42,7 +42,8 @@ class ProcessHandler:
         requestText = str(requestType)
         self.requests[requestCount] = requestType
         if args != None:
-            requestText += '\n' + args
+            for arg in args:
+                requestText += '\n' + arg
         self.__condition.acquire()
         self.client.write('REQUEST\n' + str(requestCount) + '\n' + requestText + '\nEND\n')
         self.__condition.wait()
@@ -56,8 +57,9 @@ class ProcessHandler:
         return __generateRequest(ServerRequestTypes.AuctionStart)
 
     #@return int representing Price player bid
-    def requestBid(self, powerPlant):
-        return __generateRequest(ServerRequestTypes.PowerPlantBid, args=powerPlant.toString())
+    def requestBid(self, powerPlant, minBid):
+        return __generateRequest(ServerRequestTypes.PowerPlantBid,
+                                 args=[powerPlant.toString(), str(minBid)])
 
     def requestMaterialPurchase(self):
         return __generateRequest(ServerRequestTypes.ResourcePurchase)
