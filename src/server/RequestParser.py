@@ -16,4 +16,4 @@
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
 
 def parseRequest ( request ):
-	
+    pass

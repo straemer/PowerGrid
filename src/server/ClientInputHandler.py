@@ -15,20 +15,27 @@
 # You should have received a copy of the GNU General Public License
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
 
-class ClientInputHandler:
-    def __init__(self, client):
-        self.client = client
+import threading
+
+from src.server.ResponseParser import *
+from src.server.RequestParser import *
+
+class ClientInputHandler(threading.Thread):
+    def __init__(self, processHandler):
+        threading.Thread.__init__(self)
+        self.client = processHandler.client
+        self.responseParser = ResponseParser(processHandler)
     def __getFullMessage(self):
         ret = ''
-        for line in self.client.stdin:
+        for line in self.client.stdout:
             if line.lower() != 'end\n':
                 ret +=line
             else:
                 return ret
 
     def run(self):
-        for line in self.client.stdin:
+        for line in self.client.stdout:
             if line.lower() == 'request\n':
                 parseRequest(__getFullMessage())
             elif line.lower() == 'response\n':
-                parseResponse(__getFullMessage())
+                self.responseParser.parse(__getFullMessage())
