@@ -46,7 +46,7 @@ class ProcessHandler:
             for arg in args:
                 requestText += '\n' + arg
         self.__condition.acquire()
-        self.client.stdin.write('REQUEST\n' + str(self.requestCount) + '\n' + requestText + '\nEND\n')
+        self.client.stdin.write(bytes('REQUEST\n' + str(self.requestCount) + '\n' + requestText + '\nEND\n', 'UTF-8'))
         self.__condition.wait()
         self.__responseLock.acquire()
         ret = copy(self.response)

@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # File SillyBot.py
 # This file is a part of PowerGrid
 # Copyright 2013 Stephen Kraemer, Nikolai Semenenko
