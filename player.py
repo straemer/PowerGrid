@@ -6,11 +6,16 @@ class Player:
     max_plants=3
     max_resources=[]
     
-    
+    def powerCities():
+       quit=False
+       plants_powered=[]
+       while quit==False:
+           plant = int(input('Enter plant no.'))
+       
 
     def bid():
-        valid=false
-        while valid==false:
+        valid=False
+        while valid==False:
             plant = int(input('Enter plant no.'))
             cur_bid=int(input('Enter bid'))
             if cur_bid==-1:
@@ -21,8 +26,8 @@ class Player:
             
     def update_bid(outbid, plant, maxbid):
         if outbid:
-            valid=false
-            while valid==false:
+            valid=False
+            while valid==False:
                 cur_bid=int(input('Enter bid'))
                 if cur_bid==-1:
                     return
@@ -36,8 +41,8 @@ class Player:
             money=money-maxbid
             
     def remove_powerPlant():
-        valid=false
-        while valid==false:
+        valid=False
+        while valid==False:
             plant_no=int(input('Enter power plant to remove (1-3)'))
             if plant_no>0 and plant_no<4:
                 power_plants.remove(plant_no)
