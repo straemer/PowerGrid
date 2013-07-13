@@ -59,7 +59,7 @@ class ProcessHandler:
     #@return int representing Price player bid
     def requestBid(self, powerPlant, minBid, player):
         return self.__generateRequest(ServerRequestTypes.POWER_PLANT_BID,
-                                 args=[powerPlant.toString(), str(minBid), str(player)])
+                                 args=[str(powerPlant), str(minBid), str(player)])
 
     def requestMaterialPurchase(self):
         return self.__generateRequest(ServerRequestTypes.RESOURCE_PURCHASE)
