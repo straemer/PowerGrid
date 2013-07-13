@@ -64,9 +64,6 @@ class Deck(object):
             pass
         return card
    
-    def print(self):
-        for card in self.cards:
-            print("%s " % card.cost),
 
 
 
