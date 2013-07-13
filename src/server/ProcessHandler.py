@@ -16,6 +16,9 @@
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
 
 import subprocess
+import threading
+
+from src.server.ClientInputHandler import *
 
 class ProcessHandler:
     def __init__(self, processName):
@@ -34,16 +37,16 @@ class ProcessHandler:
         self.client.write('REQUEST\n' + str(requestCount) + '\n' + requestString + '\nEND\n')
 
     def requestAuctionStart(self):
-	_generateRequest("Auction")
+        __generateRequest("Auction")
 
     def requestBid(self, powerPlant):
-        _generateRequest("Bid\n" + powerPlant.toString()
+        __generateRequest("Bid\n" + powerPlant.toString())
 
     def requestMaterialPurchase(self):
-	_generateRequest("MaterialPurchase")
+        __generateRequest("MaterialPurchase")
 
     def requestCityPurchase(self):
-	_generateRequest("CityPurchase")
+        _generateRequest("CityPurchase")
 
     def requestSupplyPowerForCities(self):
-	_generateRequest("SupplyPowerForCities")
+        _generateRequest("SupplyPowerForCities")
