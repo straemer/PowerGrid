@@ -23,35 +23,36 @@ class ResponseParser:
     def __init__(self, processHandler):
         self.processHandler = processHandler
 
-    def parse(response):
+    def parse(self, response):
         try:
             splitResponse = regex.split('\n', response)
             requestId = splitResponse[0]
-            requestType = processHandler.getRequestType(requestId)
+            requestType = self.processHandler.getRequestType(requestId)
             if int(requestType) == ServerRequestTypes.AUCTION_START:
                 self.processHandler.writeResponse(int(splitResponse[1]))
             elif int(requestType) == ServerRequestTypes.POWER_PLANT_BID:
                 self.processHandler.writeResponse(int(splitResponse[1]))
             elif int(requestType) == ServerRequestTypes.RESOURCE_PURCHASE:
                 parsedResponse = []
-                for line in splitResponse[1:]:
+                for line in splitResponse[1:-1]:
                     resourcePair = regex.split('\\s+', line)
                     parsedResponse.append((resourcePair[0], int(resourcePair[1])))
                 self.processHandler.writeResponse(parsedResponse)
             elif int(requestType) == ServerRequestTypes.CITY_PURCHASE:
                 parsedResponse = []
-                for line in splitResponse[1:]:
+                for line in splitResponse[1:-1]:
                     cityList = regex.split('\\s+', line)
                     parsedResponse.append(cityList)
                 self.processHandler.writeResponse(parsedResponse)
             elif int(requestType) == ServerRequestTypes.SUPPLY_POWER_FOR_CITIES:
                 # expects first line is number of cities - the rest are power plant numbers
                 parsedPowerPlants = []
-                for line in splitResponse[2:]:
-                     parsedPowerPlants.append(line)
+                for line in splitResponse[2:-1]:
+                    parsedPowerPlants.append(line)
                 parsedResponse = (int(splitResponse[1]), parsedPowerPlants)
                 self.processHandler.writeResponse(parsedResponse)
             else:
                 self.processHandler.writeResponse(None)
-        except:
+        except Exception as e:
+            print(e)
             self.processHandler.writeResponse(None)

@@ -46,10 +46,12 @@ class ProcessHandler:
             for arg in args:
                 requestText += '\n' + arg
         self.__condition.acquire()
-        self.client.stdin.write(bytes('REQUEST\n' + str(self.requestCount) + '\n' + requestText + '\nEND\n', 'UTF-8'))
+        self.client.stdin.write(
+            bytes('REQUEST\n' + str(self.requestCount) + '\n' + requestText + '\nEND\n', 'UTF-8'))
+        self.client.stdin.flush()
         self.__condition.wait()
         with self.__responseLock:
-            return copy(self.response)
+            return copy(self.__response)
 
     #@return int representing PowerPlant to begin bidding on
     def requestAuctionStart(self):
@@ -71,7 +73,7 @@ class ProcessHandler:
         return self.__generateRequest(ServerRequestTypes.SUPPLY_POWER_FOR_CITIES)
 
     def getRequestType(self, requestId):
-        return self.requests[requestId]
+        return self.requests[int(requestId)]
 
     def writeResponse(self, response):
         with self.__condition:
