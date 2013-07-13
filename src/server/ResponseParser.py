@@ -46,10 +46,10 @@ class ResponseParser:
                 self.processHandler.writeResponse(parsedResponse)
             elif int(requestType) == ServerRequestTypes.SUPPLY_POWER_FOR_CITIES:
                 # expects first line is number of cities - the rest are power plant numbers
-                parsedPowerPlants[]
+                parsedPowerPlants = []
                 for line in splitResponse[2:]:
                      parsedPowerPlants.append(line)
-                parsedResponse = (int(splitResponse[1]), parsedPowerPlants)           
+                parsedResponse = (int(splitResponse[1]), parsedPowerPlants)
                 self.processHandler.writeResponse(parsedResponse)
             else:
                 self.processHandler.writeResponse(None)

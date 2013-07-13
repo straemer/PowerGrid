@@ -30,7 +30,7 @@ def powerPlantsAvailable():
     pass
 
 def getPowerPlantInfo(powerPlantId):
-    pass 
+    pass
 
 def getNodeInfo(nodeId):
     pass
@@ -44,5 +44,5 @@ def getPlayersInOrder():
 def getPlayerResources(player):
     pass
 
-def getStage()
+def getStage():
     pass
