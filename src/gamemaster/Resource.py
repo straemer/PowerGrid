@@ -1,6 +1,12 @@
 
 
 class Resource:
+  # ENUM
+  COAL = 0
+  OIL = 1
+  GARBAGE = 2
+  URANIUM = 3
+
   # Initialize resource on board
   coal = 24
   oil = 18
@@ -34,10 +40,14 @@ class Resource:
     self.phase = gamePhase
     self.__update_resource_restore_amount()
 
+  # Buy resources accessible from game board
+  def buy_resources(self, maps):
+    self.__buy_resources(maps[self.COAL], maps[self.OIL], maps[self.GARBAGE], maps[self.URANIUM])
+
   # Buy resources
   # params: coal, oil, garbage, uranium
   # returns: cost, 0 if not suffient resource
-  def buy_resources(self, c, o, g, u):
+  def __buy_resources(self, c, o, g, u):
     if (c > self.coal or o > self.oil or g > self.garbage or u > self.uranium):
       return 0
     totalCost = 0
@@ -128,6 +138,23 @@ class Resource:
   # show resources
   def show_resources(self):
     print ("Coal: " + str(self.coal) + ", Oil: " + str(self.oil) + ", Garbage: " + str(self.garbage) + ", Uranium: " + str(self.uranium))
+  
+  # Give resource to game board
+  def get_resources_on_board(self):
+    maps = {}
+    maps[self.COAL] = self.__get_resources(self.coalPrice, self.coalIndex, 8)
+    maps[self.OIL] = self.__get_resources(self.oilPrice, self.oilIndex, 8)
+    maps[self.GARBAGE] = self.__get_resources(self.garbagePrice, self.garbageIndex, 8)
+    maps[self.URANIUM] = self.__get_resources(self.uraniumPrice, self.uraniumIndex, self.URANIUM_MAX)
+    return maps
+
+  # helper method to retrieve general resource on board
+  def __get_resources(self, array, index, maxIndex):
+    temp = {}
+    while (index < maxIndex):
+      temp[index+1] = array[index]
+      index += 1
+    return temp
 
   # Restore resources
   def restore_resources(self):
@@ -230,7 +257,7 @@ class Resource:
 
 # Main
 #resources = Resource(3)
-#resources.print_resource_restock_amount()
+#resources.get_resources_on_board()
 #resources.print_all_resource_stock_list()
 #resources.restore_resources()
 #print ('')
