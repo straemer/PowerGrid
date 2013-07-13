@@ -23,7 +23,7 @@ def main(players):
 	while (not gameover):
 		print "Paying the players"
 		for player in players:
-			player.addMoney(payday.pay(player.get_cities_powered)
+			player.addMoney(payday.pay(player.get_cities_powered))
 
 		print "Decide the new turn order"
 		players = calculateTurns(players)
@@ -61,17 +61,3 @@ def main(players):
 			#Server.poll how many you wanna power
 			
 		
-class Player:
-	def __init__(self, cities, highest):
-		self.cities = cities
-		self.highest = highest
-	
-	def highestPlant(self):
-		return self.highest
-
-
-player1 = Player(1,10)
-player2 = Player(1,33)
-
-for player in calculateTurns([player1, player2]):
-	print player.highest
