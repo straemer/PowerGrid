@@ -1,4 +1,4 @@
-# File RequestParser.py
+# ClientRequestTypes.py
 # This file is a part of PowerGrid
 # Copyright 2013 Stephen Kraemer, Nikolai Semenenko
 
@@ -15,5 +15,15 @@
 # You should have received a copy of the GNU General Public License
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
 
-def parseRequest ( request ):
-    pass
+class ClientRequestTypes:
+    PLAYER_FUNDS = 0
+    GRAPH = 1
+    AVAILABLE_RESOURCES = 2
+    AVAILAVLE_POWER_PLANT = 3
+    POWER_PLANT_PROPERTIES = 4
+    NODE_INFO = 5
+    ALL_POWER_PLANTS = 6
+    PLAYERS_IN_ORDER = 7
+    PLAYER_RESOURCES = 8
+    CURRENT_STAGE = 9
+    

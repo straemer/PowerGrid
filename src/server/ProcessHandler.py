@@ -16,7 +16,6 @@
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
 
 import subprocess
-import threading
 
 from src.server.ClientInputHandler import *
 
@@ -26,21 +25,26 @@ class ProcessHandler:
                                        stdin = subprocess.PIPE,
                                        stdout = subprocess.PIPE)
         self.requestCount = 0
-        self.inputHandler = ClientInputHandler(self.client)
-        self.inputHandlerThread = threading.Thread(target=self.inputHandler.run)
+        self.inputHandler = ClientInputHandler(self)
+        self.inputHandler.start()
+        self.requests = {}
 
     def __del__(self):
         self.client.terminate()
 
-    def __generateRequest(self, requestString):
+    def __generateRequest(self, requestType, args=None):
         self.requestCount += 1
-        self.client.write('REQUEST\n' + str(requestCount) + '\n' + requestString + '\nEND\n')
+        requestText = requestType
+        self.requests[requestCount] = requestType
+        if args != None:
+            requestText += '\n' + args
+        self.client.write('REQUEST\n' + str(requestCount) + '\n' + requestText + '\nEND\n')
 
     def requestAuctionStart(self):
         __generateRequest("Auction")
 
     def requestBid(self, powerPlant):
-        __generateRequest("Bid\n" + powerPlant.toString())
+        __generateRequest("Bid" + powerPlant.toString())
 
     def requestMaterialPurchase(self):
         __generateRequest("MaterialPurchase")
@@ -50,3 +54,6 @@ class ProcessHandler:
 
     def requestSupplyPowerForCities(self):
         _generateRequest("SupplyPowerForCities")
+
+    def getRequestType(self, requestId):
+        return self.requests[requestId]
