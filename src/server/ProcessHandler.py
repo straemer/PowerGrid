@@ -23,6 +23,9 @@ class ProcessHandler:
                                        stdin = subprocess.PIPE,
                                        stdout = subprocess.PIPE)
 
+    def __del__(self):
+        self.client.terminate()
+
     def requestAuctionStart(self):
         pass
 
