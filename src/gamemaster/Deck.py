@@ -69,9 +69,5 @@ class Deck(object):
             print("%s " % card.cost),
 
 
-# EXECUT DECK CODE 
-deck = Deck()
-deck.print()
-
 
 
