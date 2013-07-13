@@ -6,11 +6,17 @@ class Player:
     max_plants=3
     max_resources=[]
     
-    def powerCities():
-       quit=False
-       plants_powered=[]
-       while quit==False:
-           plant = int(input('Enter plant no.'))
+    def __init__(self):
+        self.money=0
+        self.resources=[]
+        self.cities=[]
+        self.power_plants=[]
+        self.max_plants=3
+        self.max_resources=[]  
+    
+    def power_cities():
+        quit_game=False
+        player 
        
 
     def bid():
@@ -24,7 +30,7 @@ class Player:
             if result==true:
                 valid=true
             
-    def update_bid(outbid, plant, maxbid):
+    def update_bid(self, outbid, plant, maxbid):
         if outbid:
             valid=False
             while valid==False:
@@ -36,37 +42,37 @@ class Player:
                     valid=true            
         else:
             if power_plants.count>3
-            remove_powerPlant()
-            power_plants.append(getPlant(plant))
-            money=money-maxbid
+            remove_powerPlant(self)
+            self.power_plants.append(getPlant(plant))
+            self.money=self.money-maxbid
             
-    def remove_powerPlant():
+    def remove_powerPlant(self):
         valid=False
         while valid==False:
             plant_no=int(input('Enter power plant to remove (1-3)'))
             if plant_no>0 and plant_no<4:
-                power_plants.remove(plant_no)
+                self.power_plants.remove(plant_no)
             
-    def get_resources(res_req):
+    def get_resources(self, res_req):
         tot_cost=0
         if tot_cost==-1:
             return
-        if tot_cost-money<0:
+        if tot_cost-self.money<0:
             return
         else:
             for r in res_req:
-                resources.append(r)
-            money = money-tot_cost
+                self.resources.append(r)
+            self.money = self.money-tot_cost
     
     def buy_cities(cities_req):
         tot_cost=0
         if tot_cost == -1:
             return
-        if tot_cost-money < 0:
+        if tot_cost-self.money < 0:
             return
         else:
             for r in res_req:
-                cities.append(r)        
+                self.cities.append(r)        
 
 
 class PowerPlant:
