@@ -16,8 +16,10 @@
 
 # You should have received a copy of the GNU General Public License
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
+import sys
+sys.path.append('../..')
 
-from src.server.ServerRequestTypes import *
+from src.ServerRequestTypes import *
 
 def print_helper(responseNum, responseText):
     print("RESPONSE\n" + responseNum + "\n" + responseText + "\nEND\n")
@@ -31,7 +33,7 @@ def run():
             line = sys.stdin.readline() # get request number
             requestType = sys.stdin.readline() # get request type
             for line in sys.stdin:
-                if line == "END"
+                if line == "END":
                      break
                 parsedRequest.append(line)
             if int(requestType) == ServerRequestTypes.AUCTION_START:
@@ -48,7 +50,7 @@ def run():
             elif int(requestType) == ServerRequestTypes.SUPPLY_POWER_FOR_CITIES:
                 powerPlantResponse = "7\n1\n2\n3\n4\n5\n"
                 self.print_helper(responseNum, powerPlantResponse())
-            else 
+            else: 
                 pass
-if __name__ == "__main__"
+if __name__ == "__main__":
     run()
