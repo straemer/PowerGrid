@@ -1,12 +1,19 @@
+import src.gamemaster.PowerPlant
+import src.gamemaster.Resource
+
 class Player:
     
     def __init__(self):
         self.money=0
-        self.resources=[]
+        #[coal, oil, garbage, uranium]
+        self.resources=[0, 0, 0, 0]
         self.cities=[]
         self.power_plants=[]
         self.max_plants=3
-        self.max_resources=[]  
+        
+        #max capacity
+        self.max_resources=[0, 0, 0, 0]  
+        
         self.cities_powered=0
     
     def f_b_get_money(self):
@@ -42,6 +49,9 @@ class Player:
             tot_powered+=p.cities_powered
         self.cities_powered=tot_powered
     
+    def add_plant(self, plant):
+        self.power_plants.append(plant)
+    
     def get_cities_powered(self):
         return cities_powered
     
@@ -51,15 +61,19 @@ class Player:
             return -1
         return sorted_plants[0]
     
-    def buy_resources(self, res_req):
-        tot_cost=0
+    def add_resources(self, resources):
+        for r in resources:
+            self.resources.append(r)
+    
+    def buy_resources(self, resources):
+        tot_cost+=buy_resources(resource[0], resource[1], resource[2], resource[3])
         if tot_cost==-1:
             return
         if tot_cost-self.money<0:
             return
         else:
-            for r in res_req:
-                self.resources.append(r)
+            for i in range(res_resources):
+                self.resources[i]+=resources[i]
             self.money = self.money-tot_cost
     
     def buy_cities(cities_req):
