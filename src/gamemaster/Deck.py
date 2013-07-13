@@ -35,15 +35,10 @@ class Deck(object):
         
         for i in range (10,2,-1):
             self.placeCardOnTop(i)
-        
-        
 
     def __popAndMove(self, cardToFind, newIndex):
         for (i,card) in enumerate(self.cards):
-            if isinstance(card, PowerPlant) and card.cost == cardToFind:
-                self.cards.insert(newIndex, self.cards.pop(i))
-                return
-            elif isinstance(card, PowerPlant) and card.type == "STAGE3":
+            if card.cost == cardToFind or  card.type == cardToFind:
                 self.cards.insert(newIndex, self.cards.pop(i))
                 return
         print("Invalid Card. Could not locate")

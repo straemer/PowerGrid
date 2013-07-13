@@ -11,10 +11,7 @@ class Table(object):
         self.cardsOnTable = []
         for i in range(0,8):
             self.addPowerPlant()
-        
-    def addPowerPlant(self):
-        self.cardsOnTable.append(self.deck.drawCard())
-        
+       
     def __removeCard(self, cardToFind):
         for (i,card) in enumerate(self.cardsOnTable):
             if card.cost == cardToFind or  card.type == cardToFind:
@@ -23,8 +20,15 @@ class Table(object):
         print("Invalid Card. Could not locate")
         
     def removePowerPlant(self, card):
-        return self.__removeCard(card)
+        card =  self.__removeCard(card)
+        self.cardsOnTable.append(self.deck.drawCard())
+        return card
+    
+    
+    def addPowerPlant(self):
+        self.cardsOnTable.append(self.deck.drawCard())
 
 table = Table()
+print (table.deck.placeCardOnTop("STAGE3"))
 card = table.removePowerPlant(3)
 print (card)
