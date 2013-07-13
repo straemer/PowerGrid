@@ -1,6 +1,6 @@
 # File ProcessHandler.py
 # This file is a part of PowerGrid
-# Copyright 2013 Stephen Kraemer
+# Copyright 2013 Stephen Kraemer, Nikolai Semenenko
 
 # PowerGrid is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,6 +23,8 @@ class ProcessHandler:
                                        stdin = subprocess.PIPE,
                                        stdout = subprocess.PIPE)
         self.requestCount = 0
+        self.inputHandler = ClientInputHandler(self.client)
+        self.inputHandlerThread = threading.Thread(target=self.inputHandler.run)
 
     def __del__(self):
         self.client.terminate()

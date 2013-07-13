@@ -1,6 +1,6 @@
-# File RequestParser.py
+# File ClientInputHandler.py
 # This file is a part of PowerGrid
-# Copyright 2013 Stephen Kraemer, Nikolai Semenenko
+# Copyright 2013 Stephen Kraemer
 
 # PowerGrid is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,5 +15,20 @@
 # You should have received a copy of the GNU General Public License
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
 
-def parseRequest ( request ):
-	
+class ClientInputHandler:
+    def __init__(self, client):
+        self.client = client
+    def __getFullMessage(self):
+        ret = ''
+        for line in self.client.stdin:
+            if line.lower() != 'end\n':
+                ret +=line
+            else:
+                return ret
+
+    def run(self):
+        for line in self.client.stdin:
+            if line.lower() == 'request\n':
+                parseRequest(__getFullMessage())
+            elif line.lower() == 'response\n':
+                parseResponse(__getFullMessage())
