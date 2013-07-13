@@ -29,9 +29,9 @@ class ResponseParser:
             requestId = splitResponse[0]
             requestType = processHandler.getRequestType(requestId)
             if int(requestType) == ServerRequestTypes.AuctionStart:
-                self.processHandler.writeResponse(None)
+                self.processHandler.writeResponse(int(splitResponse[1]))
             elif int(requestType) == ServerRequestTypes.PowerPlantBid:
-                self.processHandler.writeResponse(None)
+                self.processHandler.writeResponse(int(splitResponse[1]))
             elif int(requestType) == ServerRequestTypes.ResourcePurchase:
                 self.processHandler.writeResponse(None)
             elif int(requestType) == ServerRequestTypes.CityPurchase:

@@ -51,9 +51,11 @@ class ProcessHandler:
         self.__responseLock.release()
         return ret
 
+    #@return int representing PowerPlant to begin bidding on
     def requestAuctionStart(self):
         return __generateRequest(ServerRequestTypes.AuctionStart)
 
+    #@return int representing Price player bid
     def requestBid(self, powerPlant):
         return __generateRequest(ServerRequestTypes.PowerPlantBid, args=powerPlant.toString())
 
