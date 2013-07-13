@@ -63,8 +63,3 @@ class Deck(object):
             #NOTIFY GAME THAT STAGE 3 has occured
             pass
         return card
-   
-
-
-
-
