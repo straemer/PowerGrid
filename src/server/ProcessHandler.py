@@ -48,10 +48,8 @@ class ProcessHandler:
         self.__condition.acquire()
         self.client.stdin.write(bytes('REQUEST\n' + str(self.requestCount) + '\n' + requestText + '\nEND\n', 'UTF-8'))
         self.__condition.wait()
-        self.__responseLock.acquire()
-        ret = copy(self.response)
-        self.__responseLock.release()
-        return ret
+        with self.__responseLock:
+            return copy(self.response)
 
     #@return int representing PowerPlant to begin bidding on
     def requestAuctionStart(self):
@@ -76,9 +74,7 @@ class ProcessHandler:
         return self.requests[requestId]
 
     def writeResponse(self, response):
-        self.__condition.acquire()
-        self.__responseLock.acquire()
-        self.__response = response
-        self.__responseLock.release()
-        self.__condition.notify()
-        self.__condition.release()
+        with self.__condition:
+            with self.__responseLock:
+                self.__response = response
+            self.__condition.notify()
