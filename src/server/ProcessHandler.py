@@ -40,12 +40,12 @@ class ProcessHandler:
     def __generateRequest(self, requestType, args=None):
         self.requestCount += 1
         requestText = str(requestType)
-        self.requests[requestCount] = requestType
+        self.requests[self.requestCount] = requestType
         if args != None:
             for arg in args:
                 requestText += '\n' + arg
         self.__condition.acquire()
-        self.client.write('REQUEST\n' + str(requestCount) + '\n' + requestText + '\nEND\n')
+        self.client.write('REQUEST\n' + str(self.requestCount) + '\n' + requestText + '\nEND\n')
         self.__condition.wait()
         self.__responseLock.acquire()
         ret = copy(self.response)
