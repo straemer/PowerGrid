@@ -26,4 +26,3 @@ class ClientRequestTypes:
     PLAYERS_IN_ORDER = 7
     PLAYER_RESOURCES = 8
     CURRENT_STAGE = 9
-    
