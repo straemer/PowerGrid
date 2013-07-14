@@ -15,34 +15,53 @@
 # You should have received a copy of the GNU General Public License
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
 
-from src.gamemaster.player import Player
+import player
+class ServerRequestHandler:
+	def __init__(self, game):
+		self.game = game
 
-def moneyRequest(player):
-    pass
+	#return int 
+	def moneyRequest(self, playerId):
+		for player in self.game.players:
+			if (playerId == player.get_playerID()):
+				return player.f_b_get_money()
+	
+	#TODO map is yet to be implemented in game
+	def graphRequest():
+		pass
 
-def graphRequest():
-    pass
+	#return MAP<Resource.ENUM, int)
+	def resourcesAvailable(self):
+		return self.game.ResourceMarket.get_resources_on_board()
 
-def resourcesAvailable():
-    pass
+	#return Array[PowerPLant]
+	def powerPlantsAvailable(self):
+		return self.game.Table.getCardsForAuction() + self.game.Table.getFutureCardsForAuction()
 
-def powerPlantsAvailable():
-    pass
+	#TODO not sure what you are expecting here
+	def getPowerPlantInfo(powerPlantId):
+			pass
 
-def getPowerPlantInfo(powerPlantId):
-    pass
+	#TODO not sure what info you want here either and in what format
+	def getNodeInfo(nodeId):
+			pass
+	
+	#return Array[PowerPlant]
+	def getPlayerPowerPlants(self,playerId):
+		for player in self.game.players:
+			if (playerId == player.get_playerID()):
+				return player.get_PowerPlants()
 
-def getNodeInfo(nodeId):
-    pass
+	#return Array[Players]
+	def getPlayersInOrder(self):
+		return self.game.players
 
-def getPlayerPowerPlants(player):
-    pass
+	#return Array[int]
+	def getPlayerResources(self, playerID):
+		for player in self.game.players:
+			if (playerID == player.get_playerID()):
+				return player.getResources()
 
-def getPlayersInOrder():
-    pass
-
-def getPlayerResources(player):
-    pass
-
-def getStage():
-    pass
+	#return int the current stage
+	def getStage():
+		return self.game.currentPhase
