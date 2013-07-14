@@ -69,6 +69,7 @@ class ProcessHandler:
     def requestCityPurchase(self):
         return self.__generateRequest(ServerRequestTypes.CITY_PURCHASE)
 
+		#return a tuple(number of cities, list of plant ids)
     def requestSupplyPowerForCities(self):
         return self.__generateRequest(ServerRequestTypes.SUPPLY_POWER_FOR_CITIES)
 

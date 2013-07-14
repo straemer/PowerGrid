@@ -17,6 +17,9 @@ class Table(object):
 
         print("Invalid Card. Could not locate")
       
+    def getDeck(self):
+    	return self.deck
+
     def addPowerPlantToAuction(self):
             self.cardsOnTable.append(self.deck.drawCard())
   
