@@ -16,5 +16,41 @@
 
 # You should have received a copy of the GNU General Public License
 # along with PowerGrid.  If not, see <http://www.gnu.org/licenses/>.
-while(True):
-    pass
+import sys
+sys.path.append('../..')
+
+from src.ServerRequestTypes import *
+
+def print_helper(responseNum, responseText):
+    print("RESPONSE\n" + str(responseNum) + responseText + "\nEND")
+    sys.stdout.flush()
+
+def run():
+    bid = 0
+    for line in sys.stdin:
+        parsedRequest = []
+        if line.lower() == "request\n":
+            responseNum = sys.stdin.readline() # get request number
+            requestType = sys.stdin.readline() # get request type
+            for line in sys.stdin:
+                if line.lower() == "end\n":
+                     break
+                parsedRequest.append(line)
+            if int(requestType) == ServerRequestTypes.AUCTION_START:
+                print_helper(responseNum, str(10))
+            elif int(requestType) == ServerRequestTypes.POWER_PLANT_BID:
+                print_helper(responseNum, str(bid))
+                bid = bid + 1
+            elif int(requestType) == ServerRequestTypes.RESOURCE_PURCHASE:
+                purchaseResponse = "Oil 10\nCoal 5\nUranium 9001"
+                print_helper(responseNum, purchaseResponse)
+            elif int(requestType) == ServerRequestTypes.CITY_PURCHASE:
+                cityResponse = "1 2 3\n2 3 4\n3 5 6\n4 10 12\n5 1"
+                print_helper(responseNum, cityResponse)
+            elif int(requestType) == ServerRequestTypes.SUPPLY_POWER_FOR_CITIES:
+                powerPlantResponse = "7\n1\n2\n3\n4\n5"
+                print_helper(responseNum, powerPlantResponse)
+            else:
+                pass
+
+run()

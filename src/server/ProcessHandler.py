@@ -46,12 +46,12 @@ class ProcessHandler:
             for arg in args:
                 requestText += '\n' + arg
         self.__condition.acquire()
-        self.client.stdin.write(bytes('REQUEST\n' + str(self.requestCount) + '\n' + requestText + '\nEND\n', 'UTF-8'))
+        self.client.stdin.write(
+            bytes('REQUEST\n' + str(self.requestCount) + '\n' + requestText + '\nEND\n', 'UTF-8'))
+        self.client.stdin.flush()
         self.__condition.wait()
-        self.__responseLock.acquire()
-        ret = copy(self.response)
-        self.__responseLock.release()
-        return ret
+        with self.__responseLock:
+            return copy(self.__response)
 
     #@return int representing PowerPlant to begin bidding on
     def requestAuctionStart(self):
@@ -61,7 +61,7 @@ class ProcessHandler:
     #@return int representing Price player bid
     def requestBid(self, powerPlant, minBid, player):
         return self.__generateRequest(ServerRequestTypes.POWER_PLANT_BID,
-                                 args=[powerPlant.toString(), str(minBid), str(player)])
+                                 args=[str(powerPlant), str(minBid), str(player)])
 
     def requestMaterialPurchase(self):
         return self.__generateRequest(ServerRequestTypes.RESOURCE_PURCHASE)
@@ -74,12 +74,10 @@ class ProcessHandler:
         return self.__generateRequest(ServerRequestTypes.SUPPLY_POWER_FOR_CITIES)
 
     def getRequestType(self, requestId):
-        return self.requests[requestId]
+        return self.requests[int(requestId)]
 
     def writeResponse(self, response):
-        self.__condition.acquire()
-        self.__responseLock.acquire()
-        self.__response = response
-        self.__responseLock.release()
-        self.__condition.notify()
-        self.__condition.release()
+        with self.__condition:
+            with self.__responseLock:
+                self.__response = response
+            self.__condition.notify()

@@ -28,6 +28,7 @@ class ClientInputHandler(threading.Thread):
     def __getFullMessage(self):
         ret = ''
         for line in self.client.stdout:
+            line = line.decode('UTF-8')
             if line.lower() != 'end\n':
                 ret +=line
             else:
@@ -35,7 +36,8 @@ class ClientInputHandler(threading.Thread):
 
     def run(self):
         for line in self.client.stdout:
+            line = line.decode('UTF-8')
             if line.lower() == 'request\n':
-                parseRequest(__getFullMessage())
+                parseRequest(self.__getFullMessage())
             elif line.lower() == 'response\n':
-                self.responseParser.parse(__getFullMessage())
+                self.responseParser.parse(self.__getFullMessage())
